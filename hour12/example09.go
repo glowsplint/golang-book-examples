@@ -18,7 +18,10 @@ func main() {
 	stop := make(chan bool)
 	go sender(messages)
 	go func() {
-		time.Sleep(time.Second * 2)
+		// Functionally the same as reading from the time.After channel
+		// However, now any goroutine can write to this stop channel which is useful
+		// This allows us to terminate the for loop via early return from any goroutine
+		time.Sleep(time.Second * 3)
 		fmt.Println("Time's up!")
 		stop <- true
 	}()
