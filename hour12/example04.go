@@ -6,6 +6,7 @@ import (
 )
 
 func pinger(c chan string) {
+	// Sends "ping" onto the channel every second, regular polling
 	t := time.NewTicker(1 * time.Second)
 	for {
 		c <- "ping"

@@ -1,22 +1,27 @@
 package main
 
-import "time"
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func ping1(c chan string) {
-	time.Sleep(time.Second * 1)
-	c <- "ping on channel1"
-}
-
-func ping2(c chan string) {
-	time.Sleep(time.Second * 2)
-	c <- "ping on channel2"
+func ping(i int, c chan string) func(c chan string) {
+	// Function factory
+	return func(c chan string) {
+		for {
+			time.Sleep(1 * time.Second)
+			c <- fmt.Sprintf("ping on channel %v", i)
+		}
+	}
 }
 
 func main() {
-
+	// Using a select statement on multiple channels
 	channel1 := make(chan string)
 	channel2 := make(chan string)
+
+	ping1 := ping(1, channel1)
+	ping2 := ping(2, channel1)
 
 	go ping1(channel1)
 	go ping2(channel2)
