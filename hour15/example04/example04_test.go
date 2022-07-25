@@ -9,6 +9,7 @@ type GreetingTest struct {
 }
 
 var greetingTests = []GreetingTest{
+	// Table tests
 	{"George", "en-US", "Hello George"},
 	{"Chloé", "fr-FR", "Bonjour Chloé"},
 	{"Giuseppe", "it-IT", "Ciao Giuseppe"},
