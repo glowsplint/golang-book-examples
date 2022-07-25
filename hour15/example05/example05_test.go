@@ -43,3 +43,9 @@ func BenchmarkStringFromBuffer(b *testing.B) {
 		StringFromBuffer(100)
 	}
 }
+
+func BenchmarkStringFromBuilder(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		StringFromBuilder(100)
+	}
+}

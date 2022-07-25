@@ -28,3 +28,11 @@ func StringFromBuffer(j int) string {
 	}
 	return buffer.String()
 }
+
+func StringFromBuilder(j int) string {
+	var b strings.Builder
+	for i := 0; i < j; i++ {
+		b.WriteString("a")
+	}
+	return b.String()
+}
