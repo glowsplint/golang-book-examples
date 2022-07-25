@@ -1,7 +1,9 @@
 package main
 
-import "time"
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func ping1(c chan string) {
 	time.Sleep(time.Second * 3)
@@ -26,6 +28,8 @@ func main() {
 		fmt.Println("received", msg1)
 	case msg2 := <-channel2:
 		fmt.Println("received", msg2)
+	case <-time.After(500 * time.Millisecond):
+		fmt.Println("no messages received, giving up...")
 	}
 
 }
