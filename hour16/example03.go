@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	// Logging to a file directly via Go code
 	f, err := os.OpenFile("example03.log", os.O_APPEND|os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
 		log.Fatal(err)
