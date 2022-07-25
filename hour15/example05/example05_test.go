@@ -26,6 +26,14 @@ func TestStringFromBuffer(t *testing.T) {
 	}
 }
 
+func TestStringFromBuilder(t *testing.T) {
+	got := StringFromBuilder(10)
+	want := "aaaaaaaaaa"
+	if got != want {
+		t.Fatalf("StringFromBuffer(10) = %q, want %q", got, want)
+	}
+}
+
 func BenchmarkStringFromAssignment(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		StringFromAssignment(100)
